@@ -1,0 +1,55 @@
+Internally, floating point numbers are stored in two parts: the fraction (or
+mantissa) and the exponent. If these are M and E, the value of a floating point
+number is given as M x 2E. For example, the number 0.375 is stored as
+mantissa 0.75 and exponent -1. Only a limited number of bits are available to
+store the exponent and the mantissa. Let us consider, as an example, the
+layout of a floating point number in a word of only 8 bits. We have opted for
+a three bit exponent and a five bit mantissa. This arrangement is schematical
+(the real representation is different, consult a book on computer
+architecture for full details):
+
+exponent:     mantissa:
+[E2][E1][E0] [M4][M3][M2][M1][M0]
+
+The bits are numbered such that the least significant bit is the rightmost
+bit of each of the mantissa and the exponent. We assume that the exponent
+stores two’s-complement numbers. The bit pattern for -1 is thus 111. The
+mantissa is arranged such that the most significant bit M4 counts the halves,
+the next bit M3 counts the quarter, and so on. Therefore, the bit pattern for
+0.75 is 11000. The representation of 0.375 as an 8-bit floating point number
+is thus as shown below:
+
+exponent:     mantissa:
+[1][1][1] [1][1][0][0][0]
+
+Typically, the exponent has a range of 10+-300, and the mantissa has around
+15 digits precision. A consequence of the limited precision of the mantissa
+is that the floating point numbers are a subset of the real numbers. Hence,
+two floating point numbers can be found in C, say x and y, such that x does
+not equal y, and there does not exist a floating point number between these
+two numbers. As an example, in one C implementation there is no
+floating point number between:
+
+1.000000000000000222044604925031
+and:
+1.000000000000000444089209850062
+
+or between:
+345678912.0000000596046447753906
+and:
+345678912.0000001192092895507812
+
+The floating point numbers actually step through the real numbers, albeit in
+small steps. The actual step size depends on the machine and compiler. This
+stepping behaviour has a number of consequences. Firstly, many numbers cannot
+be represented exactly. As an example, many computer systems cannot
+represent the number 0.1 exactly. For example, the nearest numbers are:
+
+0.0999999999999999916733273153113
+and:
+0.1000000000000000055511151231257
+
+For this reason floating point numbers should be manipulated with care:
+0.1*10 is not necessarily equal to 1.0. On some systems, it is greater than
+1; on others, it is less than 1. An equality test on floating point numbers,
+for example a==0.1, will probably not give the expected result either.

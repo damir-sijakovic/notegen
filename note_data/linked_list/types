@@ -1,0 +1,22 @@
+//linked list
+typedef struct Node{
+	struct Node *next;
+	void *value;
+	char key[1];
+}Node;
+
+//double-linked list
+typedef struct Node{
+	struct Node *next;
+	struct Node *prev;
+	void *value;
+	char key[1];
+}Node;
+
+//node header
+typedef struct Header{
+	struct Node *head;
+	unsigned int length;
+	char header_name[1];
+}Header;
+

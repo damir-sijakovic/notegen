@@ -1,0 +1,10 @@
+converting real to integer type, fractional part is lost
+printf("%d\n", (int) 33.424); // => 33
+int int01 = 2.3434; // => 2
+
+float fractional part can hold 6 digits
+float f = 9.999999;
+so when double gets downcasted to float (linux 64/gcc):
+double g = 9.9999999999;
+printf("%f\n", (float) g);// => 10.000000
+

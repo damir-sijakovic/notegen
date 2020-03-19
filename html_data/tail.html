@@ -1,0 +1,26 @@
+
+<script type="text/javascript"> 
+/****************************************************************************\
+                                  Drawer
+\****************************************************************************/
+
+function ds_utl_encodeHtml(arg_str) {
+    return arg_str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;') ;
+}
+
+function drawer_toggle(self){ 
+    var clss = "drawer_visible";
+    var elem = self.nextElementSibling;
+    
+   // elem.innerHTML = ds_utl_encodeHtml(elem.innerHTML);
+
+        var class_string = " "+clss;
+    (elem.className.indexOf(clss) == -1) ? 
+        elem.className += class_string : 
+        elem.className = elem.className.replace(clss, "");
+        elem.className = elem.className.replace(/\s+/g,' ').trim();
+}
+
+</script>
+</body>
+</html>

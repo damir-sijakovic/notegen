@@ -1,0 +1,16 @@
+void freeNode(Node **arg_node){
+    if (!(*arg_node)->next){
+        free(*arg_node);
+        *arg_node = NULL;
+    }
+    else {
+        Node *node = *arg_node;
+        Node *freenode = NULL;
+        while (!node){
+            freenode = node;
+            node = node->next;
+            free(freenode);
+            freenode = NULL;
+        }
+    }
+}

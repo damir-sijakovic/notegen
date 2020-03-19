@@ -1,0 +1,24 @@
+Byte = 8 bits (bit is binary number)
+Kilobyte (KB)   = 1024 bytes
+Megabyte (MB)  = 1024 Kilobytes
+Gigabyte (GB)   = 1024 Megabytes
+Terabyte (TB)    = 1024 Gigabytes
+Petabyte (PB)  = 1024 Terabytes
+Exabyte (EB)   = 1024 Petabytes
+Zettabyte (ZB)  = 1024 Exabytes
+Yottabyte (YB)  = 1024 Zettabytes
+
+Depends on platform:
+linux 64bit, gcc (GCC) 5.3.0:
+char           (1byte, 8 bit) -128...127
+unsigned char  (1byte, 8 bit) 0...255
+short          (2byte, 16 bit) -32768...32767
+unsigned short (2byte, 16 bit) 0...65535
+int            (4byte, 32 bit) -2147483648...2147483647
+unsigned int   (4byte, 32 bit) 0...4294987295
+long           (8byte, 64 bit)
+unsigned long  (8byte, 64 bit) 0...18446744073709551615
+long long, singned/unsigned, same as long
+float          (4byte, 32 bit) ±1.2×10-38 to ±3.4×1038
+double         (8byte, 64 bit) ±2.3×10-308 to ±1.7×10308 OR alias to float for AVR.
+long double    (16byte, 128 bit) (ARM: 8, AVR: 4, x86: 10, x64: 16bit)
